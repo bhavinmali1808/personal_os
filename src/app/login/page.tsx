@@ -4,6 +4,8 @@ import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
+import Image from 'next/image'
+
 export default function LoginPage() {
   const router = useRouter()
   const [email, setEmail] = useState('')
@@ -30,7 +32,10 @@ export default function LoginPage() {
 
   return (
     <div className="app-container" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '100dvh', padding: '40px 24px' }}>
-      <p style={{ fontSize: '13px', letterSpacing: '0.2em', opacity: 0.4, marginBottom: '40px' }}>personal_os</p>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '40px', opacity: 0.5 }}>
+        <Image src="/icon-192.png" alt="personal_os logo" width={24} height={24} style={{ borderRadius: '6px' }} />
+        <p style={{ fontSize: '13px', letterSpacing: '0.2em', margin: 0 }}>personal_os</p>
+      </div>
       <h1 style={{ fontSize: '26px', fontWeight: 700, marginBottom: '32px' }}>Sign in</h1>
 
       <form onSubmit={handleSubmit} className="form-gap">

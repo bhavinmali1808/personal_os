@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Home() {
   return (
@@ -14,18 +15,20 @@ export default function Home() {
         fontFamily: 'Inter, system-ui, sans-serif',
       }}
     >
-      <p
-        style={{
-          color: '#FFFFFF',
-          fontSize: '13px',
-          letterSpacing: '0.2em',
-          fontWeight: 400,
-          marginBottom: '48px',
-          opacity: 0.5,
-        }}
-      >
-        personal_os
-      </p>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '48px', opacity: 0.5 }}>
+        <Image src="/icon-192.png" alt="personal_os logo" width={24} height={24} style={{ borderRadius: '6px' }} />
+        <p
+          style={{
+            color: '#FFFFFF',
+            fontSize: '13px',
+            letterSpacing: '0.2em',
+            fontWeight: 400,
+            margin: 0
+          }}
+        >
+          personal_os
+        </p>
+      </div>
 
       <p
         style={{

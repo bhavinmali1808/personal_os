@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Home, Calendar, BarChart2, Users, Bell, Settings } from 'lucide-react'
+import PWAInstallPrompt from '@/components/PWAInstallPrompt'
 
 const navItems = [
   { href: '/app', icon: Home, label: 'Home' },
@@ -17,6 +18,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="app-container">
+      <PWAInstallPrompt />
       <main style={{ paddingBottom: '80px' }}>
         {children}
       </main>
