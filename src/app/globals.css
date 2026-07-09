@@ -1,0 +1,350 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #1F1F1E;
+  --surface: #2A2A28;
+  --border: #3A3A38;
+  --text: #FFFFFF;
+  --text-muted: #888884;
+  --green: #22C55E;
+  --red: #EF4444;
+  --accent: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: #1F1F1E;
+  color: #FFFFFF;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+/* Max width container for mobile-first centered layout */
+.app-container {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100dvh;
+  position: relative;
+}
+
+/* Scrollable content with bottom nav space */
+.page-content {
+  padding: 0 16px 80px;
+}
+
+/* Bottom navigation */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  background: #1F1F1E;
+  border-top: 1px solid #3A3A38;
+  display: flex;
+  z-index: 50;
+}
+
+.bottom-nav a {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0 12px;
+  font-size: 10px;
+  color: #888884;
+  text-decoration: none;
+  gap: 4px;
+}
+
+.bottom-nav a.active {
+  color: #FFFFFF;
+}
+
+/* FAB */
+.fab {
+  position: fixed;
+  bottom: 80px;
+  right: max(16px, calc(50% - 240px + 16px));
+  width: 56px;
+  height: 56px;
+  background: #FFFFFF;
+  color: #1F1F1E;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  border: none;
+  cursor: pointer;
+  z-index: 40;
+}
+
+/* Inputs */
+input, select, textarea {
+  background: #2A2A28;
+  border: 1px solid #3A3A38;
+  color: #FFFFFF;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 16px;
+  width: 100%;
+  outline: none;
+  font-family: inherit;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #888884;
+}
+
+input::placeholder {
+  color: #555552;
+}
+
+select option {
+  background: #2A2A28;
+}
+
+/* Buttons */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  font-family: inherit;
+  transition: opacity 0.15s;
+}
+
+.btn:active { opacity: 0.7; }
+
+.btn-primary {
+  background: #FFFFFF;
+  color: #1F1F1E;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid #FFFFFF;
+  color: #FFFFFF;
+}
+
+.btn-ghost {
+  background: #2A2A28;
+  color: #FFFFFF;
+}
+
+.btn-danger {
+  background: #EF4444;
+  color: #FFFFFF;
+}
+
+/* Cards */
+.card {
+  background: #2A2A28;
+  border: 1px solid #3A3A38;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+/* Bottom sheet overlay */
+.sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+}
+
+.sheet {
+  background: #2A2A28;
+  border-radius: 24px 24px 0 0;
+  padding: 16px 16px 32px;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  max-height: 90dvh;
+  overflow-y: auto;
+}
+
+.sheet-handle {
+  width: 40px;
+  height: 4px;
+  background: #444;
+  border-radius: 2px;
+  margin: 0 auto 20px;
+}
+
+/* Chip select */
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 7px 14px;
+  border-radius: 100px;
+  border: 1px solid #3A3A38;
+  background: #1F1F1E;
+  color: #888884;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.chip.selected {
+  background: #FFFFFF;
+  color: #1F1F1E;
+  border-color: #FFFFFF;
+}
+
+/* Transaction row */
+.tx-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid #2A2A28;
+}
+
+.tx-row:last-child { border-bottom: none; }
+
+.tx-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.tx-icon.income { background: rgba(34,197,94,0.1); }
+.tx-icon.expense { background: rgba(239,68,68,0.1); }
+
+.tx-info { flex: 1; min-width: 0; }
+.tx-cat { font-size: 15px; font-weight: 500; color: #FFFFFF; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tx-note { font-size: 12px; color: #888884; margin-top: 2px; }
+
+.tx-amount { font-size: 16px; font-weight: 600; }
+.tx-amount.income { color: #22C55E; }
+.tx-amount.expense { color: #EF4444; }
+
+/* Section label */
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #888884;
+  margin: 20px 0 8px;
+}
+
+/* Type toggle */
+.type-toggle {
+  display: flex;
+  background: #1F1F1E;
+  border-radius: 12px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.type-toggle button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 9px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  color: #888884;
+  background: transparent;
+}
+
+.type-toggle button.active-income {
+  background: rgba(34,197,94,0.15);
+  color: #22C55E;
+}
+
+.type-toggle button.active-expense {
+  background: rgba(239,68,68,0.15);
+  color: #EF4444;
+}
+
+/* Amount display */
+.amount-display {
+  font-size: 48px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: -2px;
+  padding: 16px 0;
+}
+
+/* CSS bar chart */
+.bar-chart-row {
+  margin-bottom: 12px;
+}
+
+.bar-chart-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.bar-track {
+  height: 6px;
+  background: #3A3A38;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: #FFFFFF;
+}
+
+/* Overdue red */
+.overdue {
+  color: #EF4444;
+}
+
+/* Form spacing */
+.form-gap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Page header */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0 8px;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
